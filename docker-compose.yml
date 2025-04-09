@@ -1,10 +1,21 @@
-version: '3.8'
 services:
-  app:
-    build: .
+  app_dev:
+    build:
+      context: .
+      target: development
     ports:
       - "3000:3000"
     volumes:
       - .:/app
     environment:
-      - NODE_ENV=development 
+      - NODE_ENV=development
+      - NGROK_URL=easy-koala-usefully.ngrok-free.app
+
+  app_prod:
+    build:
+      context: .
+      target: production
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production 
