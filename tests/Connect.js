@@ -8,7 +8,7 @@ const test_urls = [
 ];
 
 // Seleciona a URL de teste (mude o índice para alternar entre as URLs)
-const test_url = test_urls[2]; // 0 para a primeira URL, 1 para a segunda, etc.
+const test_url = test_urls[0]; // 0 para a primeira URL, 1 para a segunda, etc.
 
 const user_name = Math.random().toString(36).substring(2);
 console.log('Testando User: ' + user_name);
