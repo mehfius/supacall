@@ -1,6 +1,6 @@
 {
   "name": "supacall",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Create rooms using websocket to help users connect using webrtc",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0",
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   }
 }
