@@ -16,18 +16,18 @@ class SocketService {
     this.io = require('socket.io')(http)
 
     this.io.on(EVENT_CONNECTION, (socket) => {
-      
+
       const room = socket.handshake.query.room
       const query = socket.handshake.query
-      
+
       if (!room) {
         socket.disconnect()
       } else {
-        
-        console.log(`\x1b[32m${query.user} joined the room ${query.room_name}\x1b[0m`)        
+
+        console.log(`\x1b[32m${query.user} joined the room ${query.room_name}\x1b[0m`)
         socket.join(room)
-        socket.to(room).emit(EVENT_CALL, { id: socket.id,query })
-        socket.on(EVENT_OFFER, (data,query) => {
+        socket.to(room).emit(EVENT_CALL, { id: socket.id, query })
+        socket.on(EVENT_OFFER, (data, query) => {
           console.log(`${socket.id} offering ${data.id}`)
           socket.to(data.id).emit(EVENT_OFFER, {
             id: socket.id,
@@ -36,7 +36,7 @@ class SocketService {
           })
         })
 
-        socket.on(EVENT_ANSWER, (data,query) => {
+        socket.on(EVENT_ANSWER, (data, query) => {
           console.log(`${socket.id} answering ${data.id}`)
           socket.to(data.id).emit(EVENT_ANSWER, {
             id: socket.id,
@@ -45,7 +45,7 @@ class SocketService {
           })
         })
 
-        socket.on(EVENT_CANDIDATE, (data,query) => {
+        socket.on(EVENT_CANDIDATE, (data, query) => {
           console.log(`${socket.id} sending a candidate to ${data.id}`)
           socket.to(data.id).emit(EVENT_CANDIDATE, {
             id: socket.id,
@@ -61,7 +61,7 @@ class SocketService {
             data: query
           })
         })
-        
+
       }
     })
   }
