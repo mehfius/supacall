@@ -55,16 +55,13 @@ class SocketService {
         })
 
         socket.on(EVENT_DISCONNECT, () => {
-          console.log(`${query.user} disconnected`)
+          console.log(`\x1b[35m${query.user} disconnected\x1b[0m`);
           this.io.emit(EVENT_DISCONNECT_USER, {
             id: socket.id,
             data: query
           })
         })
-
-        socket.on("disconnect-user", (data) => {
-          console.log(`\x1b[35m${`Usuário desconectado: ${data.id}`}\x1b[0m`);
-        });
+        
       }
     })
   }
