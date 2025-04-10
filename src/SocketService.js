@@ -24,7 +24,7 @@ class SocketService {
         socket.disconnect()
       } else {
         
-        console.log(`\x1b[32m${query.user} entrou na sala ${query.room_name}\x1b[0m`)        
+        console.log(`\x1b[32m${query.user} joined the room ${query.room_name}\x1b[0m`)        
         socket.join(room)
         socket.to(room).emit(EVENT_CALL, { id: socket.id,query })
         socket.on(EVENT_OFFER, (data,query) => {
