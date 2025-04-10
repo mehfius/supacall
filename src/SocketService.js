@@ -61,6 +61,10 @@ class SocketService {
             data: query
           })
         })
+
+        socket.on("disconnect-user", (data) => {
+          console.log(`\x1b[35m${`Usuário desconectado: ${data.id}`}\x1b[0m`);
+        });
       }
     })
   }
