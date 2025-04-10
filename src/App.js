@@ -1,11 +1,12 @@
 const express = require('express')
 const app = express()
 const http = require('http').createServer(app)
+const port = process.env.PORT || 3000
 require('./SocketService')(http)
 
 class App {
   constructor(port) {
-    this.port = port ? port : 3000
+    this.port = port
   }
 
   start() {
@@ -18,7 +19,7 @@ class App {
     app.use(express.static('public'))
 
     http.listen(this.port, () => {
-      console.log(`server up at port: ${this.port}`)
+      console.log(`Servidor rodando na porta: ${this.port}`)
     })
   }
 }
