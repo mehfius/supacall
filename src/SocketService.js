@@ -24,7 +24,7 @@ class SocketService {
         socket.disconnect()
       } else {
         
-        console.log(`${query.user} entrou na sala ${query.room_name}`)
+        console.log(`\x1b[32m${query.user} entrou na sala ${query.room_name}\x1b[0m`)
         
         socket.join(room)
         console.log('requesting offers')
