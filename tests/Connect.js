@@ -7,7 +7,7 @@ const test_urls = [
   "https://easy-koala-usefully.ngrok-free.app"
 ];
 
-const test_url = test_urls[3];
+const test_url = test_urls[2];
 const user_name = process.argv[2] || Math.random().toString(36).substring(2);
 const room_name = process.argv[3] || "Test Room";
 console.log(user_name + ' está conectando...');
@@ -42,4 +42,12 @@ socket.on('user-connected', (data) => {
 
 socket.on('disconnect-user', (data) => {
   console.log(`\x1b[31m${data.data.user} saiu da sala\x1b[0m`);
+});
+
+socket.on('disconnect', () => {
+  console.log("\x1b[31mConexao perdida\x1b[0m");
+});
+
+socket.on('connect_error', (error) => {
+  console.log("\x1b[31mConexao perdida\x1b[0m");
 });

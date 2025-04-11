@@ -180,8 +180,17 @@ export function test_connection(url) {
     });
   
     test_socket.on('connect_error', function (error) {
-      console.error(`Erro ao conectar a ${url}:`, error);
+      const error_message = document.createElement('div');
+      error_message.textContent = 'Conexão perdida. Tentando reconectar...';
+      error_message.style.color = 'red';
+      const container = document.querySelector('dialog[type="supacall"]>container');
+      if (container) {
+        container.appendChild(error_message);
+      }
       test_socket.disconnect();
+      setTimeout(() => {
+        test_socket.connect();
+      }, 5000);
     });
   
     test_socket.on('user-list', (users) => {

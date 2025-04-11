@@ -3,7 +3,7 @@ import { test_connection } from './connection_test.js';
 const test_urls = [
     "https://supacall.onrender.com",
     "https://socket-io-7yss.onrender.com",
-    "http://localhost:10000",
+    "http://localhost:3000",
     "https://easy-koala-usefully.ngrok-free.app"    
 ];
 
