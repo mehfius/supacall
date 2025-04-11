@@ -9,13 +9,14 @@ const test_urls = [
 
 const test_url = test_urls[3];
 const user_name = process.argv[2] || Math.random().toString(36).substring(2);
+const room_name = process.argv[3] || "Test Room";
 console.log(user_name + ' está conectando...');
 
 const socket = io(test_url, {
   query: {
-    room: "test-room",
+    room: room_name,
     user: user_name,
-    room_name: "Test Room",
+    room_name: room_name,
     card_date: new Date().toISOString()
   }
 });
